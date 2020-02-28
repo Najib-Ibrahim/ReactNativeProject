@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <script src="jquery-3.1.0.min.js"> // Implement jquery </script>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>Recipe</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    <h1 class="title">Recipe - a Recipes REST API</h1>
+    
+    <div id="homepage">
+        <h2>Find a recipe</h2>
+        <div id="recipes">
+
+        </div>
+
+    </div>
+    
+    <div class="divButton">
+        <a id="click" class="button">Click Me!</a>
+    </div>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+
+
+
+    <!-- Create React Component -->
+
+    <script type="text/babel">
+    
+    var RecipesByName = React.createClass({
+        getInitialState: function(){
+            return({
+                recipes: []
+            });
+        },
+        render: function(){
+            var recipes = this.state.recipes;
+            recipes = recipes.map(function(recipe, index){
+                return(
+                    <li key={index}>
+                            <span className="name">{recipe.obj.name}</span>
+                            <span className="source">{recipe.obj.source}</span>
+
+                        </li>
+                );
+            });
+            return(
+            <div id="recipe-container">
+                <form id="search" onSubmit={this.handleSubmit}>
+                    <label>"Search for a recipe:"</label>
+                    <input type="text" ref="name" placeholder="Recipe" required/>
+
+                    <input type="submit" value="Find Recipes" />
+                    
+                </form>
+                <ul>{recipes}</ul>
+            </div>
+            );
+        },
+        handleSubmit: function(e){
+            e.preventDefault();
+            var name = this.refs.name.value;
+
+            fetch('/api/recipe/' + name).then(function(data){
+                return data.json();
+            }).then( json => {
+                this.setState({
+                    recipes: json
+                });
+            });
+            console.log(json);
+        }
+    });
+
+    ReactDOM.render(<RecipesByName/>, document.getElementById('recipes'));
+
+    </script>
+
+</body>
+</html>
