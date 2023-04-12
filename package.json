@@ -13,24 +13,25 @@
   "dependencies": {
     "@expo/samples": "2.1.1",
     "body-parser": "^1.18.3",
-    "expo": "^35.0.0",
+    "expo": "^48.0.10",
     "expo-config": "^1.0.0",
     "express": "^4.16.4",
     "mongodb": "^3.2.3",
-    "mongoose": "^4.13.18",
-    "npm": "^6.9.0",
-    "openssl": "^1.1.0",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "mongoose": "^7.0.3",
+    "npm": "^9.6.4",
+    "openssl": "^2.0.0",
+    "react": "16.8.3",
+    "react-native": "0.59.10",
     "react-native-cli": "^2.0.1",
     "react-native-elements": "^1.1.0",
-    "react-native-fast-image": "^5.4.2",
+    "react-native-fast-image": "^8.6.3",
     "react-native-swipeout": "^2.3.6",
-    "react-navigation": "^3.10.2"
+    "react-navigation": "^3.10.2",
+    "babel-preset-expo": "^7.0.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
-    "jest-expo": "^32.0.0"
+    "jest-expo": "^41.0.0"
   },
   "private": true
 }
